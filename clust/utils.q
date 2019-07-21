@@ -146,6 +146,31 @@ clust.i.rtabkm:{([]idx:til count x;clt:y;pts:x)}
 /cast table/dictionary to matrix
 clust.i.typecast:{$[98=type x;value flip x;99=type x;value x;0=type x;x;'`type]}
 
+/create similarity, availability and responsibility matrices
+clust.i.createmtx:{
+ s:clust.i.scdist[`nege2dist;x]each x;
+ a:r:(n;n:count x)#0f;
+ `s`a`r!(s;a;r)}
+
+/update diagonal of similarity matrix with preference value
+clust.i.updpref:{p:$[-11h~type y;@[get string[y];raze x];y];{@[y;z;:;x]}[p]'[x;til count x]}
+
+/update responsibility - vectorised version - faster/more mem
+clust.i.updr:{[m;dmp]
+ v:{@[x;y;:;-0w]}'[m[`s]+m`a;til n:count first m];
+ mx:{@[l+count[x]#0;i;:;]max@[x;i:x?l:max x;:;-0w]}each v;
+ (dmp*m`r)+(1-dmp)*m[`s]-mx}
+
+/update availability - vectorised version - faster/more mem
+clust.i.upda:{[m;dmp]
+ pv:{@[x;;:;0f]where x<0}each m`r;
+ s:sum{@[y;x;:;0f]}'[k:til n:count first m;pv];
+ a:{@[;y;:;z]@[x;;:;0f]where x>0}'[(n#enlist s+m[`r]@'k)-pv;k;s];
+ (dmp*m`a)+a*1-dmp}
+
+/output table with pts and clt
+clust.i.apout:{@[;a](!). (da;til count da:distinct a:x)}
+
 /----Streaming Notebook----
 
 /update rep pts
@@ -159,6 +184,14 @@ clust.i.repupd:{[t;newp;df;r;c]
 clust.i.whichcl:{ind:@[;2]{0<count x 1}clust.kd.bestdist[x;z;0n;`e2dist]/(0w;y;y;y);exec clt from x where idx=ind}
 
 /----Algorithms----
+
+/affinity propagration algorithm
+clust.i.apalgo:{[d;dmp;b;i] /i:(m;oe;ne)
+ m[`r]:clust.i.updr[m:i 0;dmp];
+ m[`a]:clust.i.upda[m;dmp];
+ e:clust.i.imax each m[`a]+m`r;
+ if[b~1b;pltex[d;e]];
+ (m;i 2;e)}
 
 /dendrogram
 /* x = list with (tree;dgram/linkage matrix)
@@ -217,3 +250,16 @@ clust.i.algoscc:{[d;k;df;r;c;m;ns;b]
   i+:1];
   $[b;`reps`tree`r2c`r2l!(d ii;.[t;(3;j);:;{x?y}[ii]each t[3;]j:where t[2;]];{x?y}[distinct c]each c:v[`r2c]ii;v[`r2l]ii:raze v`c2r);
     $[l;m;([]idx:u;clt:raze{where y in'x}[v[`c2p]where not v`gone]each u:til count v`oreps;pts:v`oreps)]]}
+
+/plots for affinity propagration
+/d .
+plt:.p.import`matplotlib.pyplot;
+
+/plot clusters at each iteration
+pltex:{[d;e]
+ c:(!).(l;count[l:distinct e]#"bgrcmyk");
+ i:(d,'d[e],'cl:c e)til[count d]except l;
+ fig:plt[`:figure][`figsize pykw 12 6];
+ {plt[`:plot][(x 0;x 2);(x 1;x 3);`c pykw x 4]}each i;
+ plt[`:scatter][;;`c pykw cl]. flip d;
+ plt[`:show][];}
