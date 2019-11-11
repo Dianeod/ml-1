@@ -45,7 +45,8 @@ tscore:{[x;mu](avg[x]-mu)%sdev[x]%sqrt count x}
 tscoreeq:{abs[avg[x]-avg y]%sqrt(svar[x]%count x)+svar[y]%count y}
 
 / covariance/correlation calculate upper triangle only
-cvm:{(x+flip(not n=\:n)*x:(n#'0.0),'(x$/:'(n:til count x)_\:x)%count first x)-a*\:a:avg each x:"f"$x}
+cvm:{(x+flip(not n=\:n)*x:(n#'0.0),'(x$/:'(n:til count x)_\:x)%(neg[1]+count first x))-a*\:a:avg each x:"f"$x}
+cvm_new:{(k%k-1)*(x+flip(not n=\:n)*x:(n#'0.0),'(x$/:'(n:til count x)_\:x)%k:count first x)-a*\:a:avg each x:"f"$x}
 crm:{cvm[x]%u*/:u:dev each x}
 / correlation matrix, in dictionary format if input is a table
 corrmat:{$[t;{x!x!/:y}cols x;]crm$[t:98=type x;value flip@;]x}

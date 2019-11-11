@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
+
 #define we wf
 
 // find whether any points in a leaf are closer than current nearest neighbor and not in the same cluster and update nearest if so
