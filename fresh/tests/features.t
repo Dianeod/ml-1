@@ -9,7 +9,7 @@ that are present in the tsfresh documentation. It should be noted that for large
 \l fresh/tests/test.p
 
 xj:10000?10000;
-xi:1000?10000i;
+xi:1000?1000i;
 xf:10000?50000f;
 xh:10000?5000h;
 xb:10000#0101101011b;
