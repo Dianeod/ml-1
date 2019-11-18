@@ -26,6 +26,7 @@ xminfloat:20;
 xmaxf:200;
 k:100?100
 xs:enlist 1f
+xi2:1000?1000i
 
 autocorrkeys:`mean`var`median`std
 changequantkeys:`max`min`mean`var`median`std
@@ -63,7 +64,7 @@ np:.p.import[`numpy]
 .ml.fresh.feat.absenergy[xj] ~ "f"$abs_energy[xj]
 .ml.fresh.feat.absenergy[xf] ~ abs_energy[xf]
 .ml.fresh.feat.absenergy[xb] ~ "f"$abs_energy[xb]
-.ml.fresh.feat.absenergy[xi] = 0N!"f"$abs_energy[xi]
+(0N!.ml.fresh.feat.absenergy[xi2]) = 0N!"f"$abs_energy[xi2]
 .ml.fresh.feat.absenergy[x0] ~ "f"$abs_energy[x0]
 .ml.fresh.feat.absenergy[x1] ~ "f"$abs_energy[x1]
 .ml.fresh.feat.absenergy[x2] ~ "f"$abs_energy[x2]
@@ -225,7 +226,7 @@ np:.p.import[`numpy]
 .ml.fresh.feat.cidce[xj;0b] ~ cid_ce[xj;0b]
 .ml.fresh.feat.cidce[xf;0b] ~ cid_ce[xf;0b]
 .ml.fresh.feat.cidce[xb;0b] ~ cid_ce[xb;0b]
-(0N!.ml.fresh.feat.cidce[xi;0b]) = 0N!cid_ce[xi;0b]
+(0N!.ml.fresh.feat.cidce[xi;0b]) ~ 0N!cid_ce[xi2;0b]
 .ml.fresh.feat.cidce[x0;0b] ~ cid_ce[x0;0b]
 .ml.fresh.feat.cidce[x1;0b] ~ cid_ce[x1;0b]
 .ml.fresh.feat.cidce[x2;0b] ~ cid_ce[x2;0b]
@@ -469,7 +470,7 @@ abs[.ml.fresh.feat.binnedentropy[xnull;50]] ~ 0f
 
 (value .ml.fresh.feat.aggautocorr[xj]) ~ agg_autocorrelation[xj;]each autocorrkeys
 (value .ml.fresh.feat.aggautocorr[xf]) ~ agg_autocorrelation[xf;]each autocorrkeys
-(0N!value .ml.fresh.feat.aggautocorr[xb]) = 0N!agg_autocorrelation[xb;]each autocorrkeys
+(1_value .ml.fresh.feat.aggautocorr[xb]) ~ 1_agg_autocorrelation[xb;]each autocorrkeys
 (value .ml.fresh.feat.aggautocorr[xi]) ~ agg_autocorrelation[xi;]each autocorrkeys
 (value .ml.fresh.feat.aggautocorr[x0]) ~ 4#0f
 (value .ml.fresh.feat.aggautocorr[x1]) ~ 4#0f
