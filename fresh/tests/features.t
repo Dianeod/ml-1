@@ -9,7 +9,7 @@ that are present in the tsfresh documentation. It should be noted that for large
 \l fresh/tests/test.p
 
 xj:10000?10000;
-xi:1000?1000i;
+xi:1000?10000i;
 xf:10000?50000f;
 xh:10000?5000h;
 xb:10000#0101101011b;
@@ -224,8 +224,8 @@ np:.p.import[`numpy]
 
 .ml.fresh.feat.cidce[xj;0b] ~ cid_ce[xj;0b]
 .ml.fresh.feat.cidce[xf;0b] ~ cid_ce[xf;0b]
-(0N!.ml.fresh.feat.cidce[xb;0b]) ~ 0N!cid_ce[xb;0b]
-.ml.fresh.feat.cidce[xi;0b] ~ cid_ce[xi;0b]
+.ml.fresh.feat.cidce[xb;0b] ~ cid_ce[xb;0b]
+(0N!.ml.fresh.feat.cidce[xi;0b]) ~ 0N!cid_ce[xi;0b]
 .ml.fresh.feat.cidce[x0;0b] ~ cid_ce[x0;0b]
 .ml.fresh.feat.cidce[x1;0b] ~ cid_ce[x1;0b]
 .ml.fresh.feat.cidce[x2;0b] ~ cid_ce[x2;0b]
