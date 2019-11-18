@@ -402,14 +402,14 @@ abs[.ml.fresh.feat.binnedentropy[xnull;50]] ~ 0f
 .ml.fresh.feat.indexmassquantile[xi;x0] ~ x0
 
 (0N!.ml.fresh.feat.lastmax[xi]) ~ 0N!first_location_of_maximum[xi]
-.ml.fresh.feat.lastmax[xj] ~ first_location_of_maximum[xj]
-.ml.fresh.feat.lastmax[xf] ~ first_location_of_maximum[xf]
+.ml.fresh.feat.lastmax[xj] ~ last_location_of_maximum[xj]
+.ml.fresh.feat.lastmax[xf] ~ last_location_of_maximum[xf]
 .ml.fresh.feat.lastmax[x0] ~ 0n
 .ml.fresh.feat.lastmax[xs] ~ 0f
 
-(0N!.ml.fresh.feat.lastmin[xi]) ~ 0N!first_location_of_minimum[xi]
-.ml.fresh.feat.lastmin[xj] ~ first_location_of_minimum[xj]
-.ml.fresh.feat.lastmin[xf] ~ first_location_of_minimum[xf]
+.ml.fresh.feat.lastmin[xi] ~ last_location_of_minimum[xi]
+.ml.fresh.feat.lastmin[xj] ~ last_location_of_minimum[xj]
+.ml.fresh.feat.lastmin[xf] ~ last_location_of_minimum[xf]
 .ml.fresh.feat.lastmin[x0] ~ 0n
 .ml.fresh.feat.lastmin[xs] ~ 0f
 
