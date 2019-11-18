@@ -60,7 +60,7 @@ np:.p.import[`numpy]
 .ml.fresh.feat.hasdupmin[xnull] ~ 0b
 .ml.fresh.feat.hasdupmax[xnull] ~ 0b
 
-.ml.fresh.feat.absenergy[xj] ~ "f"$abs_energy[xj]
+.ml.fresh.feat.absenergy[xj] = 0N!"f"$abs_energy[xj]
 .ml.fresh.feat.absenergy[xf] ~ abs_energy[xf]
 .ml.fresh.feat.absenergy[xb] ~ "f"$abs_energy[xb]
 .ml.fresh.feat.absenergy[xi] ~ "f"$abs_energy[xi]
@@ -225,7 +225,7 @@ np:.p.import[`numpy]
 .ml.fresh.feat.cidce[xj;0b] ~ cid_ce[xj;0b]
 .ml.fresh.feat.cidce[xf;0b] ~ cid_ce[xf;0b]
 .ml.fresh.feat.cidce[xb;0b] ~ cid_ce[xb;0b]
-.ml.fresh.feat.cidce[xi;0b] ~ cid_ce[xi;0b]
+.ml.fresh.feat.cidce[xi;0b] = 0N!cid_ce[xi;0b]
 .ml.fresh.feat.cidce[x0;0b] ~ cid_ce[x0;0b]
 .ml.fresh.feat.cidce[x1;0b] ~ cid_ce[x1;0b]
 .ml.fresh.feat.cidce[x2;0b] ~ cid_ce[x2;0b]
@@ -249,7 +249,7 @@ np:.p.import[`numpy]
 .ml.fresh.feat.mean2dercentral[xnull] ~ 0n
 
 .ml.fresh.feat.skewness[xj] ~ skewness_py[xj]
-(.ml.fresh.feat.skewness[xf] - skewness_py[xf])<1e-15
+(0N!.ml.fresh.feat.skewness[xf] - skewness_py[xf])<1e-15
 .ml.fresh.feat.skewness[xb] ~ skewness_py[xb]
 .ml.fresh.feat.skewness[xi] ~ skewness_py[xi]
 .ml.fresh.feat.skewness[x0] ~ 0n
@@ -474,10 +474,10 @@ abs[.ml.fresh.feat.binnedentropy[xnull;50]] ~ 0f
 (.ml.fresh.feat.lintrend[xnull]`intercept) ~ 0f
 (.ml.fresh.feat.lintrend[xnull]`rval) ~ 0f
 
-(value .ml.fresh.feat.aggautocorr[xj]) ~ agg_autocorrelation[xj;]each `mean`var`median`std
-(value .ml.fresh.feat.aggautocorr[xf]) ~ agg_autocorrelation[xf;]each `mean`var`median`std
-(value .ml.fresh.feat.aggautocorr[xb]) ~ agg_autocorrelation[xb;]each `mean`var`median`std
-(value .ml.fresh.feat.aggautocorr[xi]) ~ agg_autocorrelation[xi;]each `mean`var`median`std
+(value .ml.fresh.feat.aggautocorr[xj]) ~ agg_autocorrelation[xj;]each autocorrkeys
+(value .ml.fresh.feat.aggautocorr[xf]) ~ agg_autocorrelation[xf;]each autocorrkeys
+(value .ml.fresh.feat.aggautocorr[xb]) ~ agg_autocorrelation[xb;]each autocorrkeys
+(value .ml.fresh.feat.aggautocorr[xi]) ~ agg_autocorrelation[xi;]each autocorrkeys
 (value .ml.fresh.feat.aggautocorr[x0]) ~ 4#0f
 (value .ml.fresh.feat.aggautocorr[x1]) ~ 4#0f
 (value .ml.fresh.feat.aggautocorr[x2]) ~ agg_autocorrelation[x2;]each `mean`var`median`std
