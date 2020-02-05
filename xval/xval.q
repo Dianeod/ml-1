@@ -28,5 +28,5 @@ xv.fitscore:{[f;p;d].[.[f[][p]`:fit;d 0]`:score;d 1]`}
 / multiprocess
 loadfile`:util/mproc.q
 loadfile`:util/pickle.q
-if[0>system"s";mproc.init[abs system"s"]enlist".ml.loadfile`:xval/xval.q"];
+if[0>system"s";mproc.init[abs system"s"]enlist".ml.loadfile`:util/pickle.q"];
 xv.picklewrap:{picklewrap[(0>system"s")&.p.i.isw x]x}
