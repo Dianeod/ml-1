@@ -15,7 +15,8 @@ set PATH=C:\Miniconda3-x64;C:\Miniconda3-x64\Scripts;%PATH%
 mkdir embedpy
 cd embedpy
 
-echo %dir C:\Program Files (x86)\Microsoft Visual Studio\%
+set var = %C:\Program Files (x86)\Microsoft Visual Studio\%
+echo %var%
 
 echo getembedpy"latest" | q ..\build\getembedpy.q -q || goto :error
 cd ..
