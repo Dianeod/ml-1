@@ -16,7 +16,7 @@ mkdir embedpy
 cd embedpy
 
 set vs = $(ls C:\Program Files (x86)\Microsoft Visual Studio\)
-echo %vs%
+echo $vs
 
 echo getembedpy"latest" | q ..\build\getembedpy.q -q || goto :error
 cd ..
