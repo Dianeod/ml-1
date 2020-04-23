@@ -10,7 +10,7 @@ set OP=%PATH%
 
 set VSpath = %dir \Program Files (x86)\Microsoft Visual Studio\%
 
-dir C:\Program Files (x86)\Microsoft Visual Studio\
+find "*vcvars64.bat"
 
 echo %VSPath%
 
