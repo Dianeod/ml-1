@@ -1,5 +1,3 @@
-@echo off
-echo.
 
 :: Standalone build
 curl -fsSL -o q.lib https://github.com/KxSystems/kdb/raw/master/w64/q.lib    || goto :error
@@ -9,6 +7,8 @@ curl -fsSL -o ../src/k.h   https://github.com/KxSystems/kdb/raw/master/c/c/k.h  
 set OP=%PATH%
 
 set VSpath = %dir \Program Files (x86)\Microsoft Visual Studio\%
+
+echo %VSPath%
 
 call "C:\Program Files (x86)\Microsoft Visual Studio\%VSpath%\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 cl /LD /DKXVER=3 ../src/kdnn.c q.lib
