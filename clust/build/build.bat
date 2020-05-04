@@ -9,14 +9,16 @@ curl -fsSL -o ../src/k.h   https://github.com/KxSystems/kdb/raw/master/c/c/k.h  
 set OP=%PATH%
 
 
-:: if %1==[] ECHO VISUAL STUDIO year missing
+set "VS=2017"
 
-if %1==2017 (%DIR% = "Community"
-) elif %1==2019 (%DIR% = "Buildtools"
-)
+goto :VS%year%
 
+:VS2017
+call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Auxiliary\Build\vcvars64.bat"
 
-call "C:\Program Files (x86)\Microsoft Visual Studio\%VS%\%DIR%\Auxiliary\Build\vcvars64.bat"
+:VS2019
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Buildtools\Auxiliary\Build\vcvars64.bat"
+
 
 :: if EXIST "\Program Files (x86)\Microsoft Visual Studio\2018\Community\VC\Auxiliary\Build\vcvars64.bat" (
 ::	call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
