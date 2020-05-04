@@ -9,7 +9,7 @@ curl -fsSL -o ../src/k.h   https://github.com/KxSystems/kdb/raw/master/c/c/k.h  
 set OP=%PATH%
 
 
-set "VS=2017"
+set year="2017"
 
 goto :VS%year%
 
