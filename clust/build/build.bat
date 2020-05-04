@@ -8,12 +8,11 @@ curl -fsSL -o ../src/k.h   https://github.com/KxSystems/kdb/raw/master/c/c/k.h  
 ::keep original PATH, PATH may get too long otherwise
 set OP=%PATH%
 
-VS = args[0]
 
-if %VS%==[] ECHO VISUAL STUDIO year missing
+:: if %1==[] ECHO VISUAL STUDIO year missing
 
-if %VS%==2017 (%DIR% = "Community"
-) elif %VS%==2019 (%DIR% = "Buildtools"
+if %1==2017 (%DIR% = "Community"
+) elif %1==2019 (%DIR% = "Buildtools"
 )
 
 
