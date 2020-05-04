@@ -19,7 +19,7 @@ cd ..
 echo p)print('embedpy runs') | q -q || goto :error
 
 cd clust/build
-call "build.bat" 2017
+call "build.bat" 
 cd ../..
 
 exit /b 0
