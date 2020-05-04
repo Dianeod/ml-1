@@ -8,15 +8,7 @@ curl -fsSL -o ../src/k.h   https://github.com/KxSystems/kdb/raw/master/c/c/k.h  
 ::keep original PATH, PATH may get too long otherwise
 set OP=%PATH%
 
-if [%1] == [] (
-	goto :error
-)else if [%1]==[2017] ( 
-	set year = %1
-) else if [%1]==[2019] ( 
-	set year = %1
-)
-
-:: set year=%1
+set year=%1
 
 goto :VS%year%
 
