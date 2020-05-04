@@ -8,13 +8,18 @@ curl -fsSL -o ../src/k.h   https://github.com/KxSystems/kdb/raw/master/c/c/k.h  
 ::keep original PATH, PATH may get too long otherwise
 set OP=%PATH%
 
-::if %1 == "" (echo "Year has not been set"
-:: goto :error)
+if %1 == "" (echo "Year has not been set"
+ goto :error)
 
 set year=%1
 
 goto :VS%year%
 
+:VS2017
+call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+
+:VS2019
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Buildtools\VC\Auxiliary\Build\vcvars64.bat"
 
 cl /LD /DKXVER=3 ../src/kdnn.c q.lib
 set PATH=%OP%
@@ -26,9 +31,3 @@ del *.exp *.lib *.obj
 exit /b 0
 :error
 exit /b %errorLevel%
-
-:VS2017
-call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-
-:VS2019
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Buildtools\VC\Auxiliary\Build\vcvars64.bat"
