@@ -10,8 +10,10 @@ set OP=%PATH%
 
 if [%1] == [] (goto :error
 
-)elif [%1]==2017( set year = %1
-) else [%1]==2019( set year = %1
+)else if [%1]==2017( 
+	set year = %1
+) else if [%1]==2019( 
+	set year = %1
 )
 
 :: set year=%1
