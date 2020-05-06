@@ -18,7 +18,7 @@ if "%year%" == "2017" (
 
 IF NOT "%VSDIR%" == "" (
 	call %VSDIR%
-) else if "%yearenv% ==""(
+) else if "%yearenv% == ""(
 	goto :error
 )else (
       goto :VS
