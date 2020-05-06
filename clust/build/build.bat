@@ -10,12 +10,12 @@ set OP=%PATH%
 
 set year = %1
 
-if defined %VSDIR% (
+if EXIST %VSDIR% (
 	call %VSDIR%
 ) else if year ==[] (
        goto :error
 )else (
-      goto : VS%year%
+      goto :VS%year%
 )      
 
 
