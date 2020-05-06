@@ -10,7 +10,7 @@ set OP=%PATH%
 
 set year = %1
 
-if defined VSDIR (
+if defined %VSDIR% (
 	call %VSDIR%
 ) else if year ==[] (
        goto :error
