@@ -10,9 +10,9 @@ set OP=%PATH%
 
 set year=%1
 
-if "year" == "2017" (
+if "%year%" == "2017" (
 	set yearenv=2017\Community
-) else if "year" == "2018" (
+) else if "%year%" == "2018" (
 	set yearenv=2019\Buildtools
 ) else (
 	goto :error
