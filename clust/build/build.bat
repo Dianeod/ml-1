@@ -12,14 +12,14 @@ set year=%1
 
 if "%year%" == "2017" (
 	set yearenv=2017\Community
-) else if "%year%" == "2018" (
+) else if "%year%" == "2019" (
 	set yearenv=2019\Buildtools
-) else (
-	goto :error
 )
 
 IF NOT "%VSDIR%" == "" (
 	call %VSDIR%
+) else if "%yearenv% ==""(
+	goto :error
 )else (
       goto :VS
 )      
