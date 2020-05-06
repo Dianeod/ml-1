@@ -10,19 +10,23 @@ set OP=%PATH%
 
 set year=%1
 
+if year == 2017 (
+	set yearenv=2017/Community
+) else if year == 2018 (
+	set yearenv=2019/Buildtools
+) else (
+	goto :error
+)
+
 IF NOT "%VSDIR%" == "" (
 	call %VSDIR%
-) else IF "year" == "" (
-       goto :error
 )else (
-      goto :VS%year%
+      goto :VS
 )      
 
-:VS2017
-call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+:VS
+call "C:\Program Files (x86)\Microsoft Visual Studio\%yearenv%\VC\Auxiliary\Build\vcvars64.bat"
 
-:VS2019
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Buildtools\VC\Auxiliary\Build\vcvars64.bat"
 
 cl /LD /DKXVER=3 ../src/kdnn.c q.lib
 set PATH=%OP%
