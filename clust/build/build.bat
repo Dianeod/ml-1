@@ -16,7 +16,7 @@ if exist "%programfiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" (
 
 if NOT "" == "%VSDIR" (
 	call "%VSDIR%
-) if NOT "" == "%INSTALLPATH%" (
+) else if NOT "" == "%INSTALLPATH%" (
   call "%INSTALLPATH%\VC\Auxiliary\Build\vcvars64.bat"
 ) else (
   goto :error
