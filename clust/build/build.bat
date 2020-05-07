@@ -8,24 +8,17 @@ curl -fsSL -o ../src/k.h   https://github.com/KxSystems/kdb/raw/master/c/c/k.h  
 ::keep original PATH, PATH may get too long otherwise
 set OP=%PATH%
 
-set year=%1
+set INSTALLPATH=
 
-if "%year%" == "2017" (
-	set yearenv=2017\Community
-) else if "%year%" == "2019" (
-	set yearenv=2019\Buildtools
+if exist "%programfiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" (
+  for /F "tokens=* USEBACKQ" %%F in (`"%programfiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -version 15.0 -property installationPath`) do set INSTALLPATH=%%F
 )
 
-IF NOT "%VSDIR%" == "" (
-	call %VSDIR%
-) else if "%yearenv%" == "" (
-	goto :error
-)else (
-      goto :VS
-)      
-
-:VS
-call "C:\Program Files (x86)\Microsoft Visual Studio\%yearenv%\VC\Auxiliary\Build\vcvars64.bat"
+if NOT "" == "%INSTALLPATH%" (
+  call "%INSTALLPATH%\Common7\Tools\VsDevCmd.bat"
+) else (
+  goto :error
+)
 
 
 cl /LD /DKXVER=3 ../src/kdnn.c q.lib
