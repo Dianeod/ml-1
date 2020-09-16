@@ -17,7 +17,7 @@ residInt  :10000?1000
 residFloat:10000?1000f
 
 precisionfunc:{
-  .[{x~y};(x;y);{-1"function errored with ",x," exact match not created, ensuring diff < 1e-12\n";all 1e-12>raze y-z}][;x;y]
+  .[{x~y};(x;y);{-1"function errored with ",x," exact match not created, ensuring diff < 1e-12\n";all 1e-12>raze y-z}[;x;y]]
   }
 
 // Load files
