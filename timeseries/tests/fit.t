@@ -35,10 +35,10 @@ failingTest[.ml.ts.AR.fit;(endogFloat;5000#exogFloat;1;1b);0b;"Endog length less
 
 
 // ARMA tests
-all raze raze each value .ml.ts.ARMA.fit[endogInt  ;()       ;1;2;1b]=ARMA1
-all raze raze each value .ml.ts.ARMA.fit[endogInt  ;exogFloat;2;1;0b]=ARMA2
-all raze raze each value .ml.ts.ARMA.fit[endogFloat;exogInt  ;1;1;0b]=ARMA3
-all raze raze each value .ml.ts.ARMA.fit[endogFloat;exogMixed;3;2;1b]=ARMA4
+all raze raze each value 0N!.ml.ts.ARMA.fit[endogInt  ;()       ;1;2;1b]=ARMA1
+all raze raze each value 0N!.ml.ts.ARMA.fit[endogInt  ;exogFloat;2;1;0b]=ARMA2
+all raze raze each value 0N!.ml.ts.ARMA.fit[endogFloat;exogInt  ;1;1;0b]=ARMA3
+all raze raze each value 0N!.ml.ts.ARMA.fit[endogFloat;exogMixed;3;2;1b]=ARMA4
 
 failingTest[.ml.ts.ARMA.fit;(endogInt  ;5000#exogInt  ;2;1;0b);0b;"Endog length less than length"]
 failingTest[.ml.ts.ARMA.fit;(endogFloat;5000#exogFloat;2;1;0b);0b;"Endog length less than length"]
