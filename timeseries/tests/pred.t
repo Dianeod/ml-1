@@ -1,9 +1,12 @@
+// precision function for windows vs unix results
+precisionFunc:{all 1e-10>raze raze each value x-y}
 \l p.q
 \l ml.q
 \l timeseries/utils.q
 \l timeseries/fit.q
 \l timeseries/predict.q
 \l timeseries/tests/failMessage.q
+
 
 \S 42
 exogIntFuture   :1000 50#5000?1000
@@ -18,29 +21,29 @@ loadFunc["fit/"]each fileList;
 loadFunc["pred/pred"]each fileList;
 
 // precision function for windows vs unix results
-
+precisionFunc:{all 1e-10>raze raze each value x-y}
 
 // AR tests
 
-all raze raze each value .ml.ts.AR.predict[AR1;();1000]~predAR1
-all raze raze each value .ml.ts.AR.predict[AR2;exogFloatFuture;1000]~predAR2
-all raze raze each value .ml.ts.AR.predict[AR3;exogIntFuture;1000]~predAR3
-all raze raze each value .ml.ts.AR.predict[AR4;exogMixedFuture;1000]~predAR4
+precisionFunc[.ml.ts.AR.predict[AR1;();1000];predAR1]
+precisionFunc[.ml.ts.AR.predict[AR2;exogFloatFuture;1000];predAR2]
+precisionFunc[.ml.ts.AR.predict[AR3;exogIntFuture;1000];predAR3]
+precisionFunc[.ml.ts.AR.predict[AR4;exogMixedFuture;1000];predAR4]
 
 failingTest[.ml.ts.AR.predict;(AR2;-1_'exogFloatFuture;1000);0b;"Test exog length does not match train exog length"]
 failingTest[.ml.ts.AR.predict;(AR3;-1_'exogIntFuture  ;1000);0b;"Test exog length does not match train exog length"]
 
 // ARCH tests
 
-all raze raze each value .ml.ts.ARCH.predict[ARCH1;1000]=predARCH1
-all raze raze each value .ml.ts.ARCH.predict[ARCH2;1000]=predARCH2
+precisionFunc[.ml.ts.ARCH.predict[ARCH1;1000];predARCH1]
+precisionFunc[.ml.ts.ARCH.predict[ARCH2;1000];predARCH2]
 
 // ARMA tests
 
-all raze raze each value .ml.ts.ARMA.predict[ARMA1;();1000]=predARMA1
-all raze raze each value .ml.ts.ARMA.predict[ARMA2;exogFloatFuture;1000]=predARMA2
-all raze raze each value .ml.ts.ARMA.predict[ARMA3;exogIntFuture;1000]=predARMA3
-all raze raze each value .ml.ts.ARMA.predict[ARMA4;exogMixedFuture;1000]=predARMA4
+precisionFunc[.ml.ts.ARMA.predict[ARMA1;();1000];predARMA1]
+precisionFunc[.ml.ts.ARMA.predict[ARMA2;exogFloatFuture;1000];predARMA2]
+precisionFunc[.ml.ts.ARMA.predict[ARMA3;exogIntFuture;1000];predARMA3]
+precisionFunc[.ml.ts.ARMA.predict[ARMA4;exogMixedFuture;1000];predARMA4]
 
 failingTest[.ml.ts.ARMA.predict;(ARMA2;-1_'exogFloatFuture;1000);0b;"Test exog length does not match train exog length"]
 failingTest[.ml.ts.ARMA.predict;(ARMA3;-1_'exogIntFuture  ;1000);0b;"Test exog length does not match train exog length"]
@@ -48,10 +51,10 @@ failingTest[.ml.ts.ARMA.predict;(AR1  ;()                 ;1000);0b;"The followi
 
 // ARIMA tests
 
-all raze raze each value .ml.ts.ARIMA.predict[ARIMA1;();1000]=predARIMA1
-all raze raze each value .ml.ts.ARIMA.predict[ARIMA2;exogFloatFuture;1000]=predARIMA2
-all raze raze each value .ml.ts.ARIMA.predict[ARIMA3;exogIntFuture;1000]=predARIMA3
-all raze raze each value .ml.ts.ARIMA.predict[ARIMA4;exogMixedFuture;1000]=predARIMA4
+precisionFunc[.ml.ts.ARIMA.predict[ARIMA1;();1000];predARIMA1]
+precisionFunc[.ml.ts.ARIMA.predict[ARIMA2;exogFloatFuture;1000];predARIMA2]
+precisionFunc[.ml.ts.ARIMA.predict[ARIMA3;exogIntFuture;1000];predARIMA3]
+precisionFunc[.ml.ts.ARIMA.predict[ARIMA4;exogMixedFuture;1000];predARIMA4]
 
 failingTest[.ml.ts.ARIMA.predict;(ARIMA2;-1_'exogFloatFuture;1000);0b;"Test exog length does not match train exog length"]
 failingTest[.ml.ts.ARIMA.predict;(ARIMA3;-1_'exogIntFuture  ;1000);0b;"Test exog length does not match train exog length"] 
@@ -59,12 +62,11 @@ failingTest[.ml.ts.ARIMA.predict;(ARMA4 ;exogMixedFuture    ;1000);0b;"The follo
 
 // SARIMA tests
 
-all raze raze each value .ml.ts.SARIMA.predict[SARIMA1;();1000]=predSARIMA1
-all raze raze each value .ml.ts.SARIMA.predict[SARIMA2;exogFloatFuture;1000]=predSARIMA2
-all raze raze each value .ml.ts.SARIMA.predict[SARIMA3;exogIntFuture;1000]=predSARIMA3
-all raze raze each value .ml.ts.SARIMA.predict[SARIMA4;exogMixedFuture;1000]=predSARIMA4
+precisionFunc[.ml.ts.SARIMA.predict[SARIMA1;();1000];predSARIMA1]
+precisionFunc[.ml.ts.SARIMA.predict[SARIMA2;exogFloatFuture;1000];predSARIMA2]
+precisionFunc[.ml.ts.SARIMA.predict[SARIMA3;exogIntFuture;1000];predSARIMA3]
+precisionFunc[.ml.ts.SARIMA.predict[SARIMA4;exogMixedFuture;1000];predSARIMA4]
 
 failingTest[.ml.ts.SARIMA.predict;(SARIMA2;-1_'exogFloatFuture;1000);0b;"Test exog length does not match train exog length"]
 failingTest[.ml.ts.SARIMA.predict;(SARIMA3;-1_'exogIntFuture  ;1000);0b;"Test exog length does not match train exog length"]
 failingTest[.ml.ts.SARIMA.predict;(ARIMA2 ;exogFloatFuture    ;1000);0b;"The following required dictionary keys for 'mdl' are not provided: origs, P_param, Q_param"]
-
