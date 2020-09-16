@@ -1,5 +1,3 @@
-// precision function for windows vs unix results
-precisionFunc:{all 1e-10>raze raze each value x-y}
 \l p.q
 \l ml.q
 \l timeseries/utils.q
@@ -21,7 +19,7 @@ loadFunc["fit/"]each fileList;
 loadFunc["pred/pred"]each fileList;
 
 // precision function for windows vs unix results
-precisionFunc:{all 1e-10>raze raze each value x-y}
+precisionFunc:{1e-10>abs x-y}
 
 // AR tests
 

@@ -22,7 +22,7 @@ fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
 {load hsym`$":timeseries/tests/data/fit/",string x}each fileList;
 
 // precision function for windows vs unix results
-precisionFunc:{all 1e-10>raze raze each value x-y}
+precisionFunc:{all 1e-10>raze raze each value abs x-y}
 
 // AR tests
 precisionFunc[.ml.ts.AR.fit[endogInt  ;()       ;1;0b];AR1]
