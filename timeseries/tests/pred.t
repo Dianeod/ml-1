@@ -10,6 +10,11 @@ exogIntFuture   :1000 50#5000?1000
 exogFloatFuture :1000 50#5000?1000f
 exogMixedFuture :(1000 20#20000?1000),'(1000 20#20000?1000f),'(1000 10#10000?0b)
 
+
+precisionfunc:{
+  .[{x~y};(x;y);{-1"function errored with ",x," exact match not created, ensuring diff < 1e-12\n";all 1e-12>raze y-z}][;x;y]
+  }
+
 // Load files
 fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
          `ARIMA3`ARIMA4`SARIMA1`SARIMA2`SARIMA3`SARIMA4
