@@ -23,7 +23,7 @@ fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
 
 // precision function for windows vs unix results
 precisionfunc:{
-  .[{x~y};(x;y);{-1"Exact match not created, ensuring diff < 1e-12\n";all 1e-10>raze x-y}[x;y]]
+  .[{x~y};(x;y);{-1"Exact match not created, ensuring diff < 1e-12\n";all 1e-1>raze raze x-y}[x;y]]
   }
 
 
