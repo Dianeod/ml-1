@@ -19,7 +19,7 @@ loadFunc["pred/pred"]each fileList;
 
 // precision function for windows vs unix results
 precisionfunc:{ 
- .[{x~y};(x;y);{-1"Exact match not created, ensuring diff < 1e-12\n";all 1e-12>raze y-z}[x;y]]
+ .[{x~y};(x;y);{-1"Exact match not created, ensuring diff < 1e-12\n";all 1e-10>raze y-z}[x;y]]
  }
 
 // AR tests
