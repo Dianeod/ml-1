@@ -26,7 +26,7 @@ fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
 show .ml.ts.AR.fit[endogInt  ;exogFloat;3;1b];
 show AR2;
 show .ml.ts.AR.fit[endogInt  ;exogFloat;3;1b]-AR2
-all .ml.ts.AR.fit[endogInt  ;exogFloat;3;1b]=AR2
+all raze .ml.ts.AR.fit[endogInt  ;exogFloat;3;1b]=AR2
 .ml.ts.AR.fit[endogFloat;exogInt  ;2;1b]~AR3
 .ml.ts.AR.fit[endogFloat;exogMixed;4;0b]~AR4
 
