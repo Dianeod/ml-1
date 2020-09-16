@@ -7,9 +7,6 @@
 \l fresh/extract.q
 \l timeseries/tests/failMessage.q
 
-show .z.k;
-show .z.K;
-
 \S 42
 endogInt  :10000?1000
 endogFloat:10000?1000f
