@@ -19,7 +19,7 @@ loadFunc["fit/"]each fileList;
 loadFunc["pred/pred"]each fileList;
 
 // precision function for windows vs unix results
-precisionFunc:{all 1>abs x-y}
+precisionFunc:{all 1e-5>abs x-y}
 
 // AR tests
 
