@@ -28,12 +28,14 @@ fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
 // precision function for windows vs unix results
 precisionFunc:{all 1e-2>0N!max abs raze raze each value x-y}
 
-mat1~(test1 lsq test1)
-mat2~(test2 lsq test2)
-mat3~(test3 lsq test3)
-mat12~(test1 lsq test2)
-mat13~(test1 lsq test3)
-mat23~(test2 lsq test3)
+matFunc:{sub:x-y;0N!"sum: ",string sum sum each sub;0N!"max: ",string max raze sub;x~y}
+
+matFunc[mat1;test1 lsq test1]
+matFunc[mat2;(test2 lsq test2)]
+matFunc[mat3;(test3 lsq test3)]
+matFunc[mat12;(test1 lsq test2)]
+matFunc[mat13;(test1 lsq test3)]
+matFunc[mat23;(test2 lsq test3)]
 
 
 // AR tests
