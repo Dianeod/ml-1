@@ -89,9 +89,16 @@ s4:`P`D`Q`m!0 1 1 20
 precisionFunc[.ml.ts.SARIMA.fit[endogInt  ;()       ;1;1;1;0b;s1];SARIMA1]
 precisionFunc[.ml.ts.SARIMA.fit[endogInt  ;exogFloat;1;0;1;1b;s2];SARIMA2]
 precisionFunc[.ml.ts.SARIMA.fit[endogFloat;exogInt  ;1;2;0;0b;s3];SARIMA3]
-precisionFunc[.ml.ts.SARIMA.fit[endogFloat;exogMixed;2;1;1;0b;s4];SARIMA4]
+precisionFunc[aa:.ml.ts.SARIMA.fit[endogFloat;exogMixed;2;1;1;0b;s4];SARIMA4]
 show SARIMA4;
-show .ml.ts.SARIMA.fit[endogFloat;exogMixed;2;1;1;0b;s4];
+show" ";
+show aa[`params];
+show" ";
+show SARIMA4-aa;
+show" ";
+print SARIMA4`params;
+show" ";
+print aa`params;
 
 failingTest[.ml.ts.SARIMA.fit;(endogInt  ;5000#exogInt  ;2;0;1;1b;s1);0b;"Endog length less than length"]
 failingTest[.ml.ts.SARIMA.fit;(endogFloat;5000#exogFloat;2;0;1;1b;s1);0b;"Endog length less than length"]
