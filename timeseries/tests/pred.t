@@ -7,9 +7,9 @@
 
 
 \S 42
-exogIntFuture   :100 50#500?1000
-exogFloatFuture :100 50#500?1000f
-exogMixedFuture :(100 20#2000?1000),'(100 20#2000?100f),'(100 10#1000?0b)
+exogIntFuture   :100 10#1000?1000
+exogFloatFuture :100 10#1000?1000f
+exogMixedFuture :(100 5#500?1000),'(100 5#500?100f),'(100 5#500?0b)
 
 // Load files
 fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
