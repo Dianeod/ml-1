@@ -28,6 +28,8 @@ fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
 // precision function for windows vs unix results
 precisionFunc:{all 1e-2>0N!max abs raze raze each value x-y}
 
+\P 3
+
 matFunc:{sub:abs x-y;0N!"sum: ",string sum sum each sub;0N!"max: ",string max raze sub;x~y}
 
 matFunc[mat1;test1 lsq test1]
