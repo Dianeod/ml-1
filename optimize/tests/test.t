@@ -65,6 +65,6 @@ test3:100?1000f
 
 func1:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
 
-optim1~.ml.optimize.BFGS[func1;test1;();::]
-optim2~.ml.optimize.BFGS[func1;test2;();::]
-optim3~.ml.optimize.BFGS[func1;test3;();::]
+optim1~0N!.ml.optimize.BFGS[func1;test1;();::]
+optim2~0N!.ml.optimize.BFGS[func1;test2;();::]
+optim3~0N!.ml.optimize.BFGS[func1;test3;();::]
