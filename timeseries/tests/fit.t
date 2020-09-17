@@ -7,6 +7,7 @@
 \l fresh/extract.q
 \l timeseries/tests/failMessage.q
 
+
 \S 42
 endogInt  :1000?1000
 endogFloat:1000?1000f
@@ -17,14 +18,13 @@ residInt  :1000?100
 residFloat:1000?100f
 
 
-
 // Load files
 fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
          `ARIMA3`ARIMA4`SARIMA1`SARIMA2`SARIMA3`SARIMA4`nonStat
 {load hsym`$":timeseries/tests/data/fit/",string x}each fileList;
 
 // precision function for windows vs unix results
-precisionFunc:{all 1e-10>0N!max abs raze raze each value x-y}
+precisionFunc:{all 1>0N!sum abs raze raze each value x-y}
 
 
 // AR tests
@@ -72,7 +72,6 @@ precisionFunc[.ml.ts.SARIMA.fit[endogInt  ;()       ;1;1;1;0b;s1];SARIMA1]
 precisionFunc[.ml.ts.SARIMA.fit[endogInt  ;exogFloat;1;0;1;1b;s2];SARIMA2]
 precisionFunc[.ml.ts.SARIMA.fit[endogFloat;exogInt  ;1;2;0;0b;s3];SARIMA3]
 precisionFunc[.ml.ts.SARIMA.fit[endogFloat;exogMixed;2;1;1;0b;s4];SARIMA4]
-
 
 failingTest[.ml.ts.SARIMA.fit;(endogInt  ;500#exogInt  ;2;0;1;1b;s1);0b;"Endog length less than length"]
 failingTest[.ml.ts.SARIMA.fit;(endogFloat;500#exogFloat;2;0;1;1b;s1);0b;"Endog length less than length"]
