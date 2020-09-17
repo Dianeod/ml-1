@@ -1,6 +1,7 @@
 \l p.q
 \l ml.q
 \l util/util.q
+\l optimize/optim2.q
 \l optimize/optim.q
 
 // Function for the capturing of expected errors
@@ -10,10 +11,11 @@ failingTest:{[function;data;applyType;expectedError]
   functionReturn:applyType[function;data;failureFunction];
   $[`TestFailing~first functionReturn;last functionReturn;0b]
   }
-
+show .z.k;
+show .z.K;
 // Load in data saved as golden copy for this analysis
 // Load files
-fileList:`quadx0`quadx1`sinex1`multix0`multix1`multix1Gtol`multiargs0`multiargs1`optim1`optim2`optim3`test1`test2`test3
+fileList:`quadx0`quadx1`sinex1`multix0`multix1`multix1Gtol`multiargs0`multiargs1`optim1`optim2`optim3`test1`test2`test3`oldoptim1`oldoptim2`oldoptim3
 {load hsym`$":optimize/tests/data/",string x}each fileList;
 
 -1"Testing examples of optimization functionality expected to fail";
@@ -59,6 +61,10 @@ args1:enlist[`args0]!args0
 .ml.optimize.BFGS[multiFuncArgDict;x1multi;args1;::]~multiargs1
 
 func1:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
+
+.tm.optimize[func1;enlist[`xk]!enlist test1]~oldoptim1
+.tm.optimize[func1;enlist[`xk]!enlist test2]~oldoptim2
+.tm.optimize[func1;enlist[`xk]!enlist test3]~oldoptim3
 
 optim1~aa:.ml.optimize.BFGS[func1;test1;();::]
 show aa;
