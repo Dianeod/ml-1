@@ -15,14 +15,14 @@ exogFloat :10000 50#50000?1000f
 exogMixed :(10000 20#20000?1000),'(10000 20#20000?1000f),'(10000 10#10000?0b)
 residInt  :10000?1000
 residFloat:10000?1000f
-test1:100 1000#100000?100000f
-test2:100 1000#100000?100000f
-test3:100 1000#100000?100000f
+/test1:100 1000#100000?100000f
+/test2:100 1000#100000?100000f
+/test3:100 1000#100000?100000f
 
 
 // Load files
 fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
-         `ARIMA3`ARIMA4`SARIMA1`SARIMA2`SARIMA3`SARIMA4`nonStat`mat1`mat2`mat3`mat12`mat13`mat23
+         `ARIMA3`ARIMA4`SARIMA1`SARIMA2`SARIMA3`SARIMA4`nonStat`mat1`mat2`mat3`mat12`mat13`mat23`test1`test2`test3
 {load hsym`$":timeseries/tests/data/fit/",string x}each fileList;
 
 // precision function for windows vs unix results
