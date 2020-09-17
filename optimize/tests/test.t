@@ -14,7 +14,7 @@ failingTest:{[function;data;applyType;expectedError]
 
 // Load in data saved as golden copy for this analysis
 // Load files
-fileList:`quadx0`quadx1`sinex1`multix0`multix1`multix1Gtol`multiargs0`multiargs1`optim1`optim2`optim3`test1`test2`test3`oldoptim1`oldoptim2`oldoptim3`rosenx0`rosenx1
+fileList:`quadx0`quadx1`sinex1`multix0`multix1`multix1Gtol`multiargs0`multiargs1`optim1`optim2`optim3`test1`test2`test3`oldoptim1`oldoptim2`oldoptim3`x0rosen`x1rosen`rosenx0`rosenx1
 {load hsym`$":optimize/tests/data/",string x}each fileList;
 
 -1"Testing examples of optimization functionality expected to fail";
