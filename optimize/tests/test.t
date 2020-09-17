@@ -13,7 +13,7 @@ failingTest:{[function;data;applyType;expectedError]
 
 // Load in data saved as golden copy for this analysis
 // Load files
-fileList:`quadx0`quadx1`sinex1`multix0`multix1`multix1Gtol`multiargs0`multiargs1`optim1`optim2`optim3
+fileList:`quadx0`quadx1`sinex1`multix0`multix1`multix1Gtol`multiargs0`multiargs1`optim1`optim2`optim3`test1`test2`test3
 {load hsym`$":optimize/tests/data/",string x}each fileList;
 
 -1"Testing examples of optimization functionality expected to fail";
@@ -57,11 +57,6 @@ args0:enlist 5f
 args1:enlist[`args0]!args0
 .ml.optimize.BFGS[multiFuncArgList;x0multi;args0;::]~multiargs0
 .ml.optimize.BFGS[multiFuncArgDict;x1multi;args1;::]~multiargs1
-
-\S 42
-test1:100?100f
-test2:100?1000f
-test3:100?1000f
 
 func1:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
 
