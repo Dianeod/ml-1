@@ -60,9 +60,10 @@ args1:enlist[`args0]!args0
 .ml.optimize.BFGS[multiFuncArgDict;x1multi;args1;::]~multiargs1
 
 /S 42
+precisionFunc:{all 1e-11>abs x-y}
 -1"Testing of Rosenbrock function of N variables";
 rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
 x0rosen:10?10
 x1rosen:enlist[`x]!enlist 10?10f
-.ml.optimize.BFGS[rosenFunc;x0rosen;();::]~rosenx0
-.ml.optimize.BFGS[rosenFunc;x1rosen;();::]~rosenx1
+precisionFunc[.ml.optimize.BFGS[rosenFunc;x0rosen;();::]`xVals;rosenx0`xVals]
+precisionFunc[.ml.optimize.BFGS[rosenFunc;x1rosen;();::]`xVals;rosenx1`xVals]
