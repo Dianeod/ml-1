@@ -24,7 +24,7 @@ fileList:`AR1`AR2`AR3`AR4`ARCH1`ARCH2`ARMA1`ARMA2`ARMA3`ARMA4`ARIMA1`ARIMA2,
 {load hsym`$":timeseries/tests/data/fit/",string x}each fileList;
 
 // precision function for windows vs unix results
-precisionFunc:{all 1>0N!sum abs raze raze each value x-y}
+precisionFunc:{all 1e-11>abs raze raze each value x-y}
 
 
 // AR tests
@@ -63,15 +63,20 @@ failingTest[.ml.ts.ARIMA.fit;(endogFloat;500#exogFloat;1;1;1;1b);0b;"Endog lengt
 failingTest[.ml.ts.ARIMA.fit;(nonStat   ;()            ;1;0;1;1b);0b;"Time series not stationary, try another value of d"]
 
 // SARIMA tests
+
+precisionFuncSARIMA:{all $[.z.o like "w*";
+                       0.2;
+                       1e-11]>abs raze raze each value x-y}
+
 s1:`P`D`Q`m!1 0 1 5
 s2:`P`D`Q`m!2 1 0 7
 s3:`P`D`Q`m!2 1 1 8
 s4:`P`D`Q`m!0 1 1 10
 
-precisionFunc[.ml.ts.SARIMA.fit[endogInt  ;()       ;1;1;1;0b;s1];SARIMA1]
-precisionFunc[.ml.ts.SARIMA.fit[endogInt  ;exogFloat;1;0;1;1b;s2];SARIMA2]
-precisionFunc[.ml.ts.SARIMA.fit[endogFloat;exogInt  ;1;2;0;0b;s3];SARIMA3]
-precisionFunc[.ml.ts.SARIMA.fit[endogFloat;exogMixed;2;1;1;0b;s4];SARIMA4]
+precisionFuncSARIMA[.ml.ts.SARIMA.fit[endogInt  ;()       ;1;1;1;0b;s1];SARIMA1]
+precisionFuncSARIMA[.ml.ts.SARIMA.fit[endogInt  ;exogFloat;1;0;1;1b;s2];SARIMA2]
+precisionFuncSARIMA[.ml.ts.SARIMA.fit[endogFloat;exogInt  ;1;2;0;0b;s3];SARIMA3]
+precisionFuncSARIMA[.ml.ts.SARIMA.fit[endogFloat;exogMixed;2;1;1;0b;s4];SARIMA4]
 
 failingTest[.ml.ts.SARIMA.fit;(endogInt  ;500#exogInt  ;2;0;1;1b;s1);0b;"Endog length less than length"]
 failingTest[.ml.ts.SARIMA.fit;(endogFloat;500#exogFloat;2;0;1;1b;s1);0b;"Endog length less than length"]
