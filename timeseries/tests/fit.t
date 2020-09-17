@@ -63,10 +63,10 @@ failingTest[.ml.ts.ARIMA.fit;(endogFloat;500#exogFloat;1;1;1;1b);0b;"Endog lengt
 failingTest[.ml.ts.ARIMA.fit;(nonStat   ;()            ;1;0;1;1b);0b;"Time series not stationary, try another value of d"]
 
 // SARIMA tests
-s1:`P`D`Q`m!1 0 2 5
-s2:`P`D`Q`m!2 1 0 10
-s3:`P`D`Q`m!2 1 1 30
-s4:`P`D`Q`m!0 1 1 20
+s1:`P`D`Q`m!1 0 1 5
+s2:`P`D`Q`m!2 1 0 7
+s3:`P`D`Q`m!2 1 1 8
+s4:`P`D`Q`m!0 1 1 10
 
 precisionFunc[.ml.ts.SARIMA.fit[endogInt  ;()       ;1;1;1;0b;s1];SARIMA1]
 precisionFunc[.ml.ts.SARIMA.fit[endogInt  ;exogFloat;1;0;1;1b;s2];SARIMA2]
