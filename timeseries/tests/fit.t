@@ -99,6 +99,7 @@ show" ";
 .p.print SARIMA4`params;
 show" ";
 .p.print aa`params;
+.p.print SARIMA4[`params]-aa`params;
 
 failingTest[.ml.ts.SARIMA.fit;(endogInt  ;5000#exogInt  ;2;0;1;1b;s1);0b;"Endog length less than length"]
 failingTest[.ml.ts.SARIMA.fit;(endogFloat;5000#exogFloat;2;0;1;1b;s1);0b;"Endog length less than length"]
