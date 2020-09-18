@@ -392,9 +392,9 @@ i.derphi:{[func;eps;pk;alpha;xk;args]
   show pk;
   -1!"Before a pk";
   .p.print xk;
-  -1!"After"
+  -1!"After";
   xk+:alpha*pk;
-  .p.print xk
+  .p.print xk;
   // get gradient at the new position
   gval:i.grad[func;xk;args;eps];
   derval:gval mmu pk;
