@@ -44,21 +44,6 @@ precisionFunc:{$[x~y;1b;
       [-1"Sum of difference of ",string sum abs x-y;-1"\nMax difference of ",string max abs x-y;0b]]}
 
 
-rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
-precisionFunc[gradR1;.ml.i.grad[rosenFunc;rosen1;();1.49e-8]]
-precisionFunc[gradR2;.ml.i.grad[rosenFunc;rosen1;();1.49e-7]]
-precisionFunc[gradR3;.ml.i.grad[rosenFunc;"f"$rosen2;();1.49e-6]]
-precisionFunc[gradR4;.ml.i.grad[rosenFunc;"f"$rosen2;();1.49e-9]]
-
-precisionFunc[gradR5;.ml.i.grad[rosenFunc;first mat1;();1.49e-8]]
-precisionFunc[gradR6;.ml.i.grad[rosenFunc;first mat2;();1.49e-8]]
-precisionFunc[gradR7;.ml.i.grad[rosenFunc;first mat3;();1.49e-8]]
-precisionFunc[gradR5;.ml.i.grad[rosenFunc;first lsq1;();1.49e-8]]
-precisionFunc[gradR6;.ml.i.grad[rosenFunc;first lsq2;();1.49e-8]]
-precisionFunc[gradR7;.ml.i.grad[rosenFunc;first lsq3;();1.49e-8]]
-
-
-
 sub:{x-y}
 
 precisionFunc[submat1;sub[;1.49e-8]each lsq1[0]]
