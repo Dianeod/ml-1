@@ -46,9 +46,9 @@ precisionFunc:{$[x~y;1b;
 
 sub:{x-(x+y)}
 
-precisionFunc[submat1;sub[;1.49e-8]each lsq1[0]]
-precisionFunc[submat1;sub[;1.49e-8]each m1*m1:mat1[0]]
-precisionFunc[submat2;sub[;1.49e-8]each lsq2[0]]
-precisionFunc[submat2;sub[;1.49e-8]each m2*m2:mat2[0]]
-precisionFunc[submat3;sub[;1.49e-8]each lsq3[0]]
-precisionFunc[submat3;sub[;1.49e-8]each m3*m3:mat3[0]]
+precisionFunc[submat1;sub[;1.49e-3]each lsq1[0]]
+precisionFunc[submat1;sub[;1.49e-3]each mat1[0]]
+precisionFunc[submat2;sub[;1.49e-3]each lsq2[0]]
+precisionFunc[submat2;sub[;1.49e-3]each mat2[0]]
+precisionFunc[submat3;sub[;1.49e-3]each lsq3[0]]
+precisionFunc[submat3;sub[;1.49e-3]each mat3[0]]
