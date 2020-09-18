@@ -387,8 +387,8 @@ i.phi:{[func;pk;alpha;xk;args]
 i.derphi:{[func;eps;pk;alpha;xk;args]
   // increment xk by a small step size
   -1!"alpha";
-  show alpha
-  -1!"pk"
+  show alpha;
+  -1!"pk";
   show pk;
   -1!"Before a pk";
   .p.print xk;
