@@ -8,7 +8,7 @@
 // Load files
 fileList:`mat1`mat12`mat13`mat2`mat23`mat3`mmu1`mmu12`mmu13`mmu2`mmu23`mmu3`test1`test2`test3,
          `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`grad1`grad2`grad3`gradR1`gradR2`gradR4`gradR3`gradR4,
-         `gradR5`gradR6`gradR7`rosen1`rosen2
+         `gradR5`gradR6`gradR7`rosen1`rosen2`submat1`submat2`submat3
 {load hsym`$":precision/data/",string x}each fileList;
 
 precisionFunc:{$[x~y;1b;
@@ -59,3 +59,11 @@ precisionFunc[gradR7;.ml.i.grad[rosenFunc;first lsq3;();1.49e-8]]
 
 
 
+sub:{x-y}
+
+precisionFunc[submat1;sub[;1.49e-8]each lsq1[0]]
+precisionFunc[submat1;sub[;1.49e-8]each mat1[0]]
+precisionFunc[submat2;sub[;1.49e-8]each lsq2[0]]
+precisionFunc[submat2;sub[;1.49e-8]each mat2[0]]
+precisionFunc[submat3;sub[;1.49e-8]each lsq3[0]]
+precisionFunc[submat3;sub[;1.49e-8]each mat3[0]]
