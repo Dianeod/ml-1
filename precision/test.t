@@ -11,7 +11,8 @@ fileList:`mat1`mat12`mat13`mat2`mat23`mat3`mmu1`mmu12`mmu13`mmu2`mmu23`mmu3`test
          `gradR5`gradR6`gradR7`rosen1`rosen2
 {load hsym`$":precision/data/",string x}each fileList;
 
-precisionFunc:{$[x~y;1b;[-1"Sum of differences of ",string sum raze abs x-y;0b]]}
+precisionFunc:{$[x~y;1b;
+       [-1"Sum of differences of ",string sum raze abs x-y;;-1"\nMax difference of ",string max raze abs x-y;0b]]}
 
 // lsq check
 precisionFunc[mat1;lsq1:lsq[test1;test1]]
@@ -39,7 +40,8 @@ precisionFunc[mmulsq23;mmu[lsq2;lsq3]]
 
 // gradfunc
 
-precisionFunc:{$[x~y;1b;[-1"Sum of difference of ",string sum abs x-y;0b]]}
+precisionFunc:{$[x~y;1b;
+      [-1"Sum of difference of ",string sum abs x-y;-1"\nMax difference of ",string max abs x-y;0b]]}
 
 
 rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
