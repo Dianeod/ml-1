@@ -7,10 +7,11 @@
 // Load in data saved as golden copy for this analysis
 // Load files
 fileList:`mat1`mat12`mat13`mat2`mat23`mat3`mmu1`mmu12`mmu13`mmu2`mmu23`mmu3`test1`test2`test3,
-         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`grad1`grad2`grad3`gradR1`gradR2`gradR4`gradR3`gradR4`rosen1`rosen2
+         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`grad1`grad2`grad3`gradR1`gradR2`gradR4`gradR3`gradR4,
+         `gradR5`gradR6`gradR7`rosen1`rosen2
 {load hsym`$":precision/data/",string x}each fileList;
 
-precisionFunc:{$[x~y;1b;[-1"Difference of ",string sum raze abs x-y;0b]]}
+precisionFunc:{$[x~y;1b;[-1"Sum of differences of ",string sum raze abs x-y;0b]]}
 
 // lsq check
 precisionFunc[mat1;lsq1:lsq[test1;test1]]
@@ -38,14 +39,7 @@ precisionFunc[mmulsq23;mmu[lsq2;lsq3]]
 
 // gradfunc
 
-precisionFunc:{$[x~y;1b;[-1"Difference of ",string sum abs x-y;0b]]}
-
-
-quadFunc:{xexp[x[0];2]-4*x[0]}
-
-precisionFunc[grad1;.ml.i.grad[quadFunc;enlist 1029f;();1.49e-8]]
-precisionFunc[grad2;.ml.i.grad[quadFunc;enlist 712f;();1.49e-9]]
-precisionFunc[grad3;.ml.i.grad[quadFunc;enlist 111f;();1.49e-6]]
+precisionFunc:{$[x~y;1b;[-1"Sum of difference of ",string sum abs x-y;0b]]}
 
 
 rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
@@ -53,3 +47,9 @@ precisionFunc[gradR1;.ml.i.grad[rosenFunc;rosen1;();1.49e-8]]
 precisionFunc[gradR2;.ml.i.grad[rosenFunc;rosen1;();1.49e-7]]
 precisionFunc[gradR3;.ml.i.grad[rosenFunc;"f"$rosen2;();1.49e-6]]
 precisionFunc[gradR4;.ml.i.grad[rosenFunc;"f"$rosen2;();1.49e-9]]
+precisionFunc[gradR5;.ml.i.grad[rosenFunc;first lsq1;();1.49e-8]]
+precisionFunc[gradR6;.ml.i.grad[rosenFunc;first lsq2;();1.49e-8]]
+precisionFunc[gradR7;.ml.i.grad[rosenFunc;first lsq3;();1.49e-8]]
+
+
+
