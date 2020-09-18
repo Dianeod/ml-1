@@ -44,11 +44,11 @@ precisionFunc:{$[x~y;1b;
       [-1"Sum of difference of ",string sum abs x-y;-1"\nMax difference of ",string max abs x-y;0b]]}
 
 
-sub:{x-y}
+sub:{x-(x+y)}
 
 precisionFunc[submat1;sub[;1.49e-8]each lsq1[0]]
-precisionFunc[submat1;sub[;1.49e-8]each mat1[0]]
+precisionFunc[submat1;sub[;1.49e-8]each m1*m1:mat1[0]]
 precisionFunc[submat2;sub[;1.49e-8]each lsq2[0]]
-precisionFunc[submat2;sub[;1.49e-8]each mat2[0]]
+precisionFunc[submat2;sub[;1.49e-8]each m2*m2:mat2[0]]
 precisionFunc[submat3;sub[;1.49e-8]each lsq3[0]]
-precisionFunc[submat3;sub[;1.49e-8]each mat3[0]]
+precisionFunc[submat3;sub[;1.49e-8]each m3*m3:mat3[0]]
