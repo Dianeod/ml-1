@@ -1,13 +1,8 @@
-\S 42
-
-\l ml.q
-\l util/util.q
-\l optimize/optim.q
-
 // Load in data saved as golden copy for this analysis
 // Load files
 fileList:`mat1`mat12`mat13`mat2`mat23`mat3`mmu1`mmu12`mmu13`mmu2`mmu23`mmu3`test1`test2`test3,
-         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`submat1`submat2`submat3
+         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`grad1`grad2`grad3`gradR1`gradR2`gradR4`gradR3`gradR4,
+         `gradR5`gradR6`gradR7`rosen1`rosen2
 {load hsym`$":precision/data/",string x}each fileList;
 
 precisionFunc:{$[x~y;1b;
@@ -42,12 +37,27 @@ precisionFunc[mmulsq23;mmu[lsq2;lsq3]]
 precisionFunc:{$[x~y;1b;
       [-1"Sum of difference of ",string sum abs x-y;-1"\nMax difference of ",string max abs x-y;0b]]}
 
+grad:{[func;xk;eps]
+  fk:func[xk];
+  gradEval[fk;func;xk;eps]each til count xk
+  }
 
-sub:{x-(x+y)}
+gradEval:{[fk;func;xk;eps;idx]
+  if[(::)~fk;fk:i.funcEval[func;xk;args]];
+  // increment function optimisation values by epsilon
+  xk[idx]+:eps;
+  // Evaluate the gradient
+  (func[xk]-fk)%eps
+  }
 
-precisionFunc[submat1;sub[;1.49e-3]each lsq1[0]]
-precisionFunc[submat1;sub[;1.49e-3]each mat1[0]]
-precisionFunc[submat2;sub[;1.49e-3]each lsq2[0]]
-precisionFunc[submat2;sub[;1.49e-3]each mat2[0]]
-precisionFunc[submat3;sub[;1.49e-3]each lsq3[0]]
-precisionFunc[submat3;sub[;1.49e-3]each mat3[0]]
+
+rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
+
+
+precisionFunc[gradR5;grad[rosenFunc;first mat1;1.49e-8]]
+precisionFunc[gradR6;grad[rosenFunc;first mat2;1.49e-8]]
+precisionFunc[gradR7;grad[rosenFunc;first mat3;1.49e-8]]
+precisionFunc[gradR5;grad[rosenFunc;first lsq1;1.49e-8]]
+precisionFunc[gradR6;grad[rosenFunc;first lsq2;1.49e-8]]
+precisionFunc[gradR7;grad[rosenFunc;first lsq3;1.49e-8]]
+
