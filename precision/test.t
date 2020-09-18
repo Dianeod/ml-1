@@ -10,7 +10,7 @@ fileList:`mat1`mat12`mat13`mat2`mat23`mat3`mmu1`mmu12`mmu13`mmu2`mmu23`mmu3`test
          `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`grad1`grad2`grad3`gradR1`gradR2`gradR4`gradR3`gradR4`rosen1`rosen2
 {load hsym`$":precision/data/",string x}each fileList;
 
-precisionFunc:{$[x~y;1b;[-1"Difference of ",string sum raze x-y;0b]]}
+precisionFunc:{$[x~y;1b;[-1"Difference of ",string sum raze abs x-y;0b]]}
 
 // lsq check
 precisionFunc[mat1;lsq1:lsq[test1;test1]]
@@ -38,7 +38,7 @@ precisionFunc[mmulsq23;mmu[lsq2;lsq3]]
 
 // gradfunc
 
-precisionFunc:{$[x~y;1b;[-1"Difference of ",string sum x-y;0b]]}
+precisionFunc:{$[x~y;1b;[-1"Difference of ",string sum abs x-y;0b]]}
 
 
 quadFunc:{xexp[x[0];2]-4*x[0]}
