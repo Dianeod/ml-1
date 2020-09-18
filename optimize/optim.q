@@ -485,7 +485,7 @@ i.gradEval:{[fk;func;xk;args;eps;idx]
   show eps;
   // Evaluate the gradient
   -1"sub";
-  (0N!i.funcEval[func;xk;args]-fk)%eps
+  (0N!(0N!i.funcEval[func;xk;args])-fk)%eps
   }
 
 // @private
