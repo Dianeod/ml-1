@@ -39,16 +39,11 @@ optimize.BFGS:{[func;x0;args;params]
   // format x0 based on input type
   x0:i.dataFormat[x0];
   // Evaluate the function at the starting point
-  -1"Func Eval\n";
-  show f0:i.funcEval[func;x0;args];
+  f0:i.funcEval[func;x0;args];
   // Calculate the starting gradient
-  -1"Calc grad";
   gk:i.grad[func;x0;args;params`geps];
-  .p.print gk;
   // Initialize Hessian matrix as identity matrix
-  -1"Hess";
   hess:.ml.eye count x0;
-  .p.print hess;
   // set initial step guess i.e. the step before f0
   prev_fk:f0+sqrt[sum gk*gk]%2;
   gradNorm:i.vecNorm[gk;params`norm];
@@ -480,11 +475,17 @@ i.grad:{[func;xk;args;eps]
 // @returns {dict} gradient of function at position k with an individual
 //   variable x incremented by epsilon
 i.gradEval:{[fk;func;xk;args;eps;idx]
-  if[(::)~fk;fk:i.funcEval[func;xk;args]];
+  -1"grad func";
+  show if[(::)~fk;fk:i.funcEval[func;xk;args]];
   // increment function optimisation values by epsilon
+  -1"increment x";
   xk[idx]+:eps;
+  show xk[idx];
+  -1!"eps";
+  show eps;
   // Evaluate the gradient
-  (i.funcEval[func;xk;args]-fk)%eps
+  -1"sub";
+  (0N!i.funcEval[func;xk;args]-fk)%eps
   }
 
 // @private
