@@ -478,8 +478,11 @@ i.gradEval:{[fk;func;xk;args;eps;idx]
   if[(::)~fk;fk:i.funcEval[func;xk;args]];
   // increment function optimisation values by epsilon
   xk[idx]+:eps;
+  -1!"Increment";
+  show xk[idx];
   // Evaluate the gradient
-  (i.funcEval[func;xk;args]-fk)%eps
+  -1"grad func";
+  (0N!(0N!i.funcEval[func;xk;args])-fk)%eps
   }
 
 // @private
