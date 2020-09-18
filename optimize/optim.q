@@ -475,17 +475,11 @@ i.grad:{[func;xk;args;eps]
 // @returns {dict} gradient of function at position k with an individual
 //   variable x incremented by epsilon
 i.gradEval:{[fk;func;xk;args;eps;idx]
-  -1"grad func";
-  show if[(::)~fk;fk:i.funcEval[func;xk;args]];
+  if[(::)~fk;fk:i.funcEval[func;xk;args]];
   // increment function optimisation values by epsilon
-  -1"increment x";
   xk[idx]+:eps;
-  show xk[idx];
-  -1!"eps";
-  show eps;
   // Evaluate the gradient
-  -1"sub";
-  (0N!(0N!i.funcEval[func;xk;args])-fk)%eps
+  (i.funcEval[func;xk;args]-fk)%eps
   }
 
 // @private
