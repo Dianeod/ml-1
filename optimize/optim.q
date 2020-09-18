@@ -75,6 +75,8 @@ optimize.BFGS:{[func;x0;args;params]
 // @return {dict} variables, gradients, matrices and indices at the end of each iteration
 i.BFGSFunction:{[func;optimDict;args;params] 
   // calculate search direction
+  0N!"HESS";
+  .p.print optimDict`hess;
   0N!"PK";
   pk:neg mmu[optimDict`hess;optimDict`gk];
   .p.print pk;
