@@ -75,9 +75,7 @@ optimize.BFGS:{[func;x0;args;params]
 // @return {dict} variables, gradients, matrices and indices at the end of each iteration
 i.BFGSFunction:{[func;optimDict;args;params] 
   // calculate search direction
-  0N!"HESS";
   .p.print optimDict`hess;
-  0N!"PK";
   pk:neg mmu[optimDict`hess;optimDict`gk];
   .p.print pk;
   // line search func to be inserted to get alpha
@@ -527,7 +525,7 @@ i.funcEval:{[func;xk;args]
 // @returns {dict} updated or default parameter set depending on user input
 i.updDefault:{[dict]
   returnKeys:`norm`optimIter`gtol`geps`stepSize`c1`c2`wolfeIter`zoomIter`display;
-  returnVals:(0W;0W;1e-4;1.49e-5;0w;1e-4;0.9;10;10;0b);
+  returnVals:(0W;0W;1e-4;1.49e-2;0w;1e-4;0.9;10;10;0b);
   returnDict:returnKeys!returnVals;
   if[99h<>type dict;dict:()!()];
   i.wolfeParamCheck[returnDict,dict]
