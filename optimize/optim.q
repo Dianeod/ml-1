@@ -386,7 +386,15 @@ i.phi:{[func;pk;alpha;xk;args]
 // @returns {dict} gradient and value of scalar derivative
 i.derphi:{[func;eps;pk;alpha;xk;args]
   // increment xk by a small step size
+  -1!"alpha";
+  show alpha
+  -1!"pk"
+  show pk;
+  -1!"Before a pk";
+  .p.print xk;
+  -1!"After"
   xk+:alpha*pk;
+  .p.print xk
   // get gradient at the new position
   gval:i.grad[func;xk;args;eps];
   derval:gval mmu pk;
