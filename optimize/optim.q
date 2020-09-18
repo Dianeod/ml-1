@@ -477,6 +477,8 @@ i.grad:{[func;xk;args;eps]
 i.gradEval:{[fk;func;xk;args;eps;idx]
   if[(::)~fk;fk:i.funcEval[func;xk;args]];
   // increment function optimisation values by epsilon
+  -1"Before";
+  show xk[idx];
   xk[idx]+:eps;
   -1!"Increment";
   show xk[idx];
