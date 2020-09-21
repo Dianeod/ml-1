@@ -75,9 +75,7 @@ optimize.BFGS:{[func;x0;args;params]
 // @return {dict} variables, gradients, matrices and indices at the end of each iteration
 i.BFGSFunction:{[func;optimDict;args;params] 
   // calculate search direction
-  .p.print optimDict`hess;
   pk:neg mmu[optimDict`hess;optimDict`gk];
-  .p.print pk;
   // line search func to be inserted to get alpha
   wolfe:i.wolfeSearch[;;;pk;func;;args;params]. optimDict`fk`prev_fk`gk`xk;
   // old fk goes to previous val
@@ -388,15 +386,7 @@ i.phi:{[func;pk;alpha;xk;args]
 // @returns {dict} gradient and value of scalar derivative
 i.derphi:{[func;eps;pk;alpha;xk;args]
   // increment xk by a small step size
-  -1!"alpha";
-  show alpha;
-  -1!"pk";
-  show pk;
-  -1!"Before a pk";
-  .p.print xk;
-  -1!"After";
   xk+:alpha*pk;
-  .p.print xk;
   // get gradient at the new position
   gval:i.grad[func;xk;args;eps];
   derval:gval mmu pk;
@@ -520,7 +510,7 @@ i.funcEval:{[func;xk;args]
 // @returns {dict} updated or default parameter set depending on user input
 i.updDefault:{[dict]
   returnKeys:`norm`optimIter`gtol`geps`stepSize`c1`c2`wolfeIter`zoomIter`display;
-  returnVals:(0W;0W;1e-4;1.49e-2;0w;1e-4;0.9;10;10;0b);
+  returnVals:(0W;0W;1e-4;1.49e-8;0w;1e-4;0.9;10;10;0b);
   returnDict:returnKeys!returnVals;
   if[99h<>type dict;dict:()!()];
   i.wolfeParamCheck[returnDict,dict]
