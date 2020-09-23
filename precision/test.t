@@ -67,14 +67,17 @@ precisionFunc[gradR1;grad[rosenFunc;first lsq1;1.49e-8]]
 precisionFunc[gradR2;grad[rosenFunc;first lsq2;1.49e-8]]
 precisionFunc[gradR3;grad[rosenFunc;first lsq3;1.49e-8]]
 
+
+-1"\nTesting gradient function with accumulative error";
+
 gradAccum:{[func;xk;eps]
   fk:func[xk];
   xk*gradEval[fk;func;xk;eps]each til count xk
   }
 
-precisionFunc[accum1;40 gradAccum[rosenFunc;;1.49e-8]/1_first mat1]
-precisionFunc[accum2;40 gradAccum[rosenFunc;;1.49e-8]/1_first mat2]
-precisionFunc[accum3;40 gradAccum[rosenFunc;;1.49e-8]/1_first mat3]
-precisionFunc[accum1;40 gradAccum[rosenFunc;;1.49e-8]/1_first lsq1]
-precisionFunc[accum2;40 gradAccum[rosenFunc;;1.49e-8]/1_first lsq2]
-precisionFunc[accum3;40 gradAccum[rosenFunc;;1.49e-8]/1_first lsq3]
+precisionFunc[accum1;30 gradAccum[rosenFunc;;1.49e-8]/1_first mat1]
+precisionFunc[accum2;30 gradAccum[rosenFunc;;1.49e-8]/1_first mat2]
+precisionFunc[accum3;30 gradAccum[rosenFunc;;1.49e-8]/1_first mat3]
+precisionFunc[accum1;30 gradAccum[rosenFunc;;1.49e-8]/1_first lsq1]
+precisionFunc[accum2;30 gradAccum[rosenFunc;;1.49e-8]/1_first lsq2]
+precisionFunc[accum3;30 gradAccum[rosenFunc;;1.49e-8]/1_first lsq3]
