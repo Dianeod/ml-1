@@ -1,7 +1,7 @@
 // Load in data saved as golden copy for this analysis
 // Load files
 fileList:`mat1`mat12`mat13`mat2`mat23`mat3`mmu1`mmu12`mmu13`mmu2`mmu23`mmu3`test1`test2`test3,
-         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`gradR1`gradR2`gradR3`accum3
+         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`gradR1`gradR2`gradR3`accum1`accum2`accum3
 {load hsym`$":precision/data/",string x}each fileList;
 
 precisionFunc:{$[x~y;1b;
@@ -45,7 +45,7 @@ precisionFunc:{$[x~y;1b;
 
 grad:{[func;xk;eps]
   fk:func[xk];
-  xk+gradEval[fk;func;xk;eps]each til count xk
+  gradEval[fk;func;xk;eps]each til count xk
   }
 
 gradEval:{[fk;func;xk;eps;idx]
@@ -60,10 +60,21 @@ rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
 
 -1"\nTesting gradient function";
 
-/precisionFunc[gradR1;grad[rosenFunc;first mat1;1.49e-8]]
-/precisionFunc[gradR2;grad[rosenFunc;first mat2;1.49e-8]]
-/precisionFunc[gradR3;grad[rosenFunc;first mat3;1.49e-8]]
-/precisionFunc[gradR1;grad[rosenFunc;first lsq1;1.49e-8]]
-/precisionFunc[gradR2;grad[rosenFunc;first lsq2;1.49e-8]]
-/precisionFunc[gradR3;grad[rosenFunc;first lsq3;1.49e-8]]
-precisionFunc[accum3;100 grad[rosenFunc;;1.49e-8]/first lsq3]
+precisionFunc[gradR1;grad[rosenFunc;first mat1;1.49e-8]]
+precisionFunc[gradR2;grad[rosenFunc;first mat2;1.49e-8]]
+precisionFunc[gradR3;grad[rosenFunc;first mat3;1.49e-8]]
+precisionFunc[gradR1;grad[rosenFunc;first lsq1;1.49e-8]]
+precisionFunc[gradR2;grad[rosenFunc;first lsq2;1.49e-8]]
+precisionFunc[gradR3;grad[rosenFunc;first lsq3;1.49e-8]]
+
+gradAccum:{[func;xk;eps]
+  fk:func[xk];
+  xk+gradEval[fk;func;xk;eps]each til count xk
+  }
+
+precisionFunc[accum1;50 gradAccum[rosenFunc;;1.49e-8]/first mat1]
+precisionFunc[accum2;50 gradAccum[rosenFunc;;1.49e-8]/first mat2]
+precisionFunc[accum3;50 gradAccum[rosenFunc;;1.49e-8]/first mat3]
+precisionFunc[accum1;50 gradAccum[rosenFunc;;1.49e-8]/first lsq1]
+precisionFunc[accum2;50 gradAccum[rosenFunc;;1.49e-8]/first lsq2]
+precisionFunc[accum3;50 gradAccum[rosenFunc;;1.49e-8]/first lsq3]
