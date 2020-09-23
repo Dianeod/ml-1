@@ -1,7 +1,7 @@
 // Load in data saved as golden copy for this analysis
 // Load files
 fileList:`mat1`mat12`mat13`mat2`mat23`mat3`mmu1`mmu12`mmu13`mmu2`mmu23`mmu3`test1`test2`test3,
-         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`gradR1`gradR2`gradR3
+         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`gradR1`gradR2`gradR3`accum3
 {load hsym`$":precision/data/",string x}each fileList;
 
 precisionFunc:{$[x~y;1b;
