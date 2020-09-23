@@ -69,12 +69,12 @@ precisionFunc[gradR3;grad[rosenFunc;first lsq3;1.49e-8]]
 
 gradAccum:{[func;xk;eps]
   fk:func[xk];
-  xk+gradEval[fk;func;xk;eps]each til count xk
+  xk*gradEval[fk;func;xk;eps]each til count xk
   }
 
-precisionFunc[accum1;50 gradAccum[rosenFunc;;1.49e-8]/first mat1]
-precisionFunc[accum2;50 gradAccum[rosenFunc;;1.49e-8]/first mat2]
-precisionFunc[accum3;50 gradAccum[rosenFunc;;1.49e-8]/first mat3]
-precisionFunc[accum1;50 gradAccum[rosenFunc;;1.49e-8]/first lsq1]
-precisionFunc[accum2;50 gradAccum[rosenFunc;;1.49e-8]/first lsq2]
-precisionFunc[accum3;50 gradAccum[rosenFunc;;1.49e-8]/first lsq3]
+precisionFunc[accum1;40 gradAccum[rosenFunc;;1.49e-8]/1_first mat1]
+precisionFunc[accum2;40 gradAccum[rosenFunc;;1.49e-8]/1_first mat2]
+precisionFunc[accum3;40 gradAccum[rosenFunc;;1.49e-8]/1_first mat3]
+precisionFunc[accum1;40 gradAccum[rosenFunc;;1.49e-8]/1_first lsq1]
+precisionFunc[accum2;40 gradAccum[rosenFunc;;1.49e-8]/1_first lsq2]
+precisionFunc[accum3;40 gradAccum[rosenFunc;;1.49e-8]/1_first lsq3]
