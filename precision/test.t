@@ -1,7 +1,7 @@
 // Load in data saved as golden copy for this analysis
 // Load files
 fileList:`mat1`mat12`mat13`mat2`mat23`mat3`mmu1`mmu12`mmu13`mmu2`mmu23`mmu3`test1`test2`test3,
-         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`gradR1`gradR2`gradR3`accum1`accum2
+         `mmulsq1`mmulsq2`mmulsq3`mmulsq12`mmulsq13`mmulsq23`gradR1`gradR2`gradR3`accum1`accum2`accum3
 {load hsym`$":precision/data/",string x}each fileList;
 
 precisionFunc:{$[x~y;1b;
@@ -76,6 +76,8 @@ gradAccum:{[func;xk;eps]
   }
 
 precisionFunc[accum1;45 gradAccum[rosenFunc;;1.49e-8]/1_first mat1]
-precisionFunc[accum2;45 gradAccum[rosenFunc;;1.49e-8]/1_first mat2]
+precisionFunc[accum2;40 gradAccum[rosenFunc;;1.49e-8]/1_first mat2]
+precisionFunc[accum3;35 gradAccum[rosenFunc;;1.49e-8]/1_first mat3]
 precisionFunc[accum1;45 gradAccum[rosenFunc;;1.49e-8]/1_first lsq1]
-precisionFunc[accum2;45 gradAccum[rosenFunc;;1.49e-8]/1_first lsq2]
+precisionFunc[accum2;40 gradAccum[rosenFunc;;1.49e-8]/1_first lsq2]
+precisionFunc[accum3;35 gradAccum[rosenFunc;;1.49e-8]/1_first lsq3]
