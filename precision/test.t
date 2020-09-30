@@ -75,9 +75,9 @@ precisionFunc[fexp4;fe4:fexp[1f]]
 1"\nexp3: ",string fexp3-fe3;
 1"\nexp4: ",string fexp4-fe4;
 
-precisionFunc[funcN1;f1:func1-98f]
-precisionFunc[funcN2;f2:func2-98f]
-precisionFunc[funcN3;f3:func3-98f]
+precisionFunc[funcN1;f1:(func1+1.421085e-014)-98f]
+precisionFunc[funcN2;f2:(func2+1.421085e-014)-98f]
+precisionFunc[funcN3;f3:(func3+1.421085e-014)-98f]
 
 
 1"\nexp1: ",string funcN1-f1;
