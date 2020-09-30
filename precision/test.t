@@ -37,17 +37,15 @@ rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
 
 -1"\nTesting gradient function";
 
-/precisionFunc[gradR1;grad[rosenFunc;first mat1;1.49e-8]]
-/precisionFunc[gradR2;grad[rosenFunc;first mat2;1.49e-8]]
-/precisionFunc[gradR3;grad[rosenFunc;first mat3;1.49e-8]]
-/precisionFunc[gradR1;grad[rosenFunc;first lsq1;1.49e-8]]
-/precisionFunc[gradR2;grad[rosenFunc;first lsq2;1.49e-8]]
-/precisionFunc[gradR3;grad[rosenFunc;first lsq3;1.49e-8]]
 
 
 precisionFunc[func1;f1:funcEval[rosenFunc;1_first mat1;1.49e-8]]
 precisionFunc[func2;f2:funcEval[rosenFunc;1_first mat2;1.49e-8]]
 precisionFunc[func3;f3:funcEval[rosenFunc;1_first mat3;1.49e-8]]
+
+1!"func1: ",string func1-f1
+1!"func2: ",string func2-f2
+1!"func3: ",string func3-f3
 
 
 precisionFunc[sub1;subtract[rosenFunc[1_first mat1];func1]]
