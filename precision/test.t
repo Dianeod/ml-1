@@ -1,6 +1,6 @@
 // Load in data saved as golden copy for this analysis
 // Load files
-fileList:`mat1`mat12`mat13`mat2`mat23`mat3`func1`func2`func3`sub1`sub2`sub3`func1_old`func2_old`func3_old`test1`test2`test3`fexp1`fexp2`fexp3`fexp4`val1`val2`val3
+fileList:`mat1`mat12`mat13`mat2`mat23`mat3`func1`func2`func3`sub1`sub2`sub3`func1_old`func2_old`func3_old`test1`test2`test3`fexp1`fexp2`fexp3`fexp4`val1`val2`val3`funcN1`funcN2`funcN3
 {load hsym`$":precision/data/",string x}each fileList;
 
 precisionFunc:{$[x~y;1b;
@@ -73,5 +73,17 @@ precisionFunc[fexp4;fe4:fexp[-2.791842e-15+4.332489e-22+2.366583e-30]]
 /1"\nexp2: ",string raze fexp2-fe2;
 /1"\nexp3: ",string raze fexp3-fe3;
 /1"\nexp3: ",string raze fexp4-fe4;
+
+
+precisionFunc[funcN1;fN1:rosenFunc[1_first mat1]]
+precisionFunc[funcN2;fN2:rosenFunc[1_first mat2]]
+precisionFunc[funcN3;fN3:rosenFunc[1_first mat3]]
+
+1"func1: ",string funcN1-fN1;
+1"func2: ",string funcN2-fN2;
+1"func3: ",string funcN3-fN3;
+
+
+
 
 
