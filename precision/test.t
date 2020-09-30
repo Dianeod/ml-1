@@ -75,9 +75,9 @@ fexp:{x-xexp[x;5]}
 
 rosenFunc:{sum(_[-1;x]xexp 2)}
 
-precisionFunc[funcN1;f1:rosenFunc[first mat1]]
-precisionFunc[funcN2;f2:rosenFunc[first mat2]]
-precisionFunc[funcN3;f3:rosenFunc[first mat3]]
+precisionFunc[funcN1;f1:rosenFunc[1_first mat1]]
+precisionFunc[funcN2;f2:rosenFunc[1_first mat2]]
+precisionFunc[funcN3;f3:rosenFunc[1_first mat3]]
 
 1"func1: ",string funcN1-f1;
 1"func2: ",string funcN2-f2;
