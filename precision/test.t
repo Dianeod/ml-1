@@ -79,9 +79,9 @@ precisionFunc[funcN1;f1:rosenFunc[first mat1]]
 precisionFunc[funcN2;f2:rosenFunc[first mat2]]
 precisionFunc[funcN3;f3:rosenFunc[first mat3]]
 
-1"func1: ",string where 0<abs funcN1-f1;
-1"func2: ",string where 0<abs funcN2-f2;
-1"func3: ",string where 0<funcN3-f3;
+1"func1: ",raze string where 0<abs funcN1-f1;
+1"func2: ",raze string where 0<abs funcN2-f2;
+1"func3: ",raze string where 0<funcN3-f3;
 
 
 
