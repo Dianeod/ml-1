@@ -66,11 +66,13 @@ fexp:{xexp[x+1e-20;3]-xexp[x;3]}
 precisionFunc[fexp1;fe1:fexp[1.2345e-2]]
 precisionFunc[fexp2;fe2:fexp[1.2345e-7]]
 precisionFunc[fexp3;fe3:fexp[1.2345e-15]]
+precisionFunc[fexp4;fe4:fexp[1f]]
 
 
 1"\nexp1: ",string fexp1-fe1;
 1"\nexp2: ",string fexp2-fe2;
 1"\nexp3: ",string fexp3-fe3;
+1"\nexp3: ",string fexp4-fe4;
 
 
 
