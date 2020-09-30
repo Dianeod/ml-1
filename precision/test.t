@@ -73,19 +73,16 @@ fexp:{x-xexp[x;5]}
 /1"\nexp2: ",string fexp2-fe2;
 /1"\nexp3: ",string fexp3-fe3;
 
-rosenFunc:{(((_[-1;x]xexp 2)))}
+rosenFunc:{(sum(_[-1;x]xexp 2)}
 
 precisionFunc[funcN1;f1:rosenFunc[first mat1]]
 precisionFunc[funcN2;f2:rosenFunc[first mat2]]
 precisionFunc[funcN3;f3:rosenFunc[first mat3]]
 
-1"\nfunc1: ",raze string where 0<abs funcN1-f1;
-1"\nfunc2: ",raze string where 0<abs funcN2-f2;
-1"\nfunc3: ",raze string where 0<abs funcN3-f3;
+1"func1: ",string funcN1-f1;
+1"func2: ",string funcN2-f2;
+1"func3: ",string funcN3-f3;
 
-1"\nfunc1: ",raze string max abs funcN1-f1;
-1"\nfunc2: ",raze string max abs funcN2-f2;
-1"\nfunc3: ",raze string max abs funcN3-f3;
 
 
 
