@@ -63,7 +63,7 @@ precisionFunc[sub3;subtract[func3_old;func3]]
 
 
 fexp:{xexp[x;2]}
-precisionFunc[fexp1;fe1:fexp[1.370841e-2]]
+precisionFunc[fexp1;fe1:fexp[1.370841e-6]]
 precisionFunc[fexp2;fe2:fexp[1e-8]]
 precisionFunc[fexp3;fe3:fexp[-7.200289e-5]]
 
