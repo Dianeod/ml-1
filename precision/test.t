@@ -43,9 +43,9 @@ precisionFunc[func1;f1:funcEval[rosenFunc;1_first mat1;1.49e-8]]
 precisionFunc[func2;f2:funcEval[rosenFunc;1_first mat2;1.49e-8]]
 precisionFunc[func3;f3:funcEval[rosenFunc;1_first mat3;1.49e-8]]
 
-1!"func1: ",string func1-f1;
-1!"func2: ",string func2-f2;
-1!"func3: ",string func3-f3;
+1"func1: ",string func1-f1;
+1"func2: ",string func2-f2;
+1"func3: ",string func3-f3;
 
 
 precisionFunc[sub1;subtract[rosenFunc[1_first mat1];func1]]
