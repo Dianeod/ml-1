@@ -70,5 +70,5 @@ precisionFunc[fexp3;fe3:fexp[1_first mat1]]
 
 1"\nexp1: ",string fexp1-fe1;
 1"\nexp2: ",string fexp2-fe2;
-1"\nexp3: ",raze string fexp3-fe3;
+1"\nexp3: ",raze string where 0<fexp3-fe3;
 
