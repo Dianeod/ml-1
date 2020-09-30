@@ -62,11 +62,10 @@ precisionFunc[sub2;subtract[func2_old;func2]]
 precisionFunc[sub3;subtract[func3_old;func3]]
 
 
-fexp:{xexp[x+1e-8;2]-xexp[x;2]}
+fexp:{sum xexp[x+1e-8;2]-xexp[x;2]}
 precisionFunc[fexp1;fe1:fexp[1.2345e-2]]
 precisionFunc[fexp2;fe2:fexp[1.2345e-7]]
 precisionFunc[fexp3;fe3:fexp[1.2345e-15]]
-
 
 
 1"\nexp1: ",string fexp1-fe1;
