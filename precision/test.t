@@ -1,6 +1,6 @@
 // Load in data saved as golden copy for this analysis
 // Load files
-fileList:`mat1`mat12`mat13`mat2`mat23`mat3`func1`func2`func3`sub1`sub2`sub3`func1_old`func2_old`func3_old`test1`test2`test3`fexp1`fexp2`fexp3
+fileList:`mat1`mat12`mat13`mat2`mat23`mat3`func1`func2`func3`sub1`sub2`sub3`func1_old`func2_old`func3_old`test1`test2`test3`fexp1`fexp2`fexp3`fexp4`val1`val2`val3
 {load hsym`$":precision/data/",string x}each fileList;
 
 precisionFunc:{$[x~y;1b;
@@ -63,12 +63,15 @@ precisionFunc[sub3;subtract[func3_old;func3]]
 
 
 fexp:{xexp[x;6]}
-precisionFunc[fexp1;fe1:fexp[-7.200289e-3]]
-precisionFunc[fexp2;fe2:fexp[-2.791842e-15-4.332489e-7]]
-precisionFunc[fexp3;fe3:fexp[1_first mat1]]
+precisionFunc[fexp1;fe1:fexp[val1]]
+precisionFunc[fexp2;fe2:fexp[val2]]
+precisionFunc[fexp3;fe3:fexp[val3]]
+precisionFunc[fexp4;fe4:fexp[-2.791842e-15+4.332489e-22+2.366583e-30]]
 
 
-1"\nexp1: ",string fexp1-fe1;
-1"\nexp2: ",string fexp2-fe2;
-1"\nexp3: ",raze string where 0<fexp3-fe3;
+/1"\nexp1: ",string raze fexp1-fe1;
+/1"\nexp2: ",string raze fexp2-fe2;
+/1"\nexp3: ",string raze fexp3-fe3;
+/1"\nexp3: ",string raze fexp4-fe4;
+
 
