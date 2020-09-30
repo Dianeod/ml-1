@@ -73,8 +73,15 @@ precisionFunc[fexp3;fe3:fexp[1.2345e-15]]
 1"\nexp2: ",string fexp2-fe2;
 1"\nexp3: ",string fexp3-fe3;
 
+rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2)))}
 
+precisionFunc[funcN1;f1:rosenFunc[1_first mat1]]
+precisionFunc[funcN2;f2:rosenFunc[1_first mat2]]
+precisionFunc[funcN3;f3:rosenFunc[1_first mat3]]
 
+1"func1: ",string funcN1-f1;
+1"func2: ",string funcN2-f2;
+1"func3: ",string funcN3-f3;
 
 
 
