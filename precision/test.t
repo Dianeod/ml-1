@@ -1,6 +1,6 @@
 // Load in data saved as golden copy for this analysis
 // Load files
-fileList:`mat1`mat12`mat13`mat2`mat23`mat3`func1`func2`func3`sub1`sub2`sub3`func1_old`func2_old`func3_old`test1`test2`test3
+fileList:`mat1`mat12`mat13`mat2`mat23`mat3`func1`func2`func3`sub1`sub2`sub3`func1_old`func2_old`func3_old`test1`test2`test3`fexp1`fexp2`fexp3
 {load hsym`$":precision/data/",string x}each fileList;
 
 precisionFunc:{$[x~y;1b;
@@ -23,11 +23,49 @@ subtract:{x-y}
 -1"\nTesting gradient function";
 
 
+funcEval:{[func;xk;eps]
+  // increment function optimisation values by epsilon
+  xk[0]+:eps;
+  // Evaluate the gradient
+  func[xk]
+  }
+
+subtract:{x-y}
+
+// Function to get gradient of
+rosenFunc:{(sum(100*(_[1;x] - _[-1;x]xexp 2.0)xexp 2) + (1 - _[-1;x])xexp 2)}
+
+-1"\nTesting gradient function";
+
+/precisionFunc[gradR1;grad[rosenFunc;first mat1;1.49e-8]]
+/precisionFunc[gradR2;grad[rosenFunc;first mat2;1.49e-8]]
+/precisionFunc[gradR3;grad[rosenFunc;first mat3;1.49e-8]]
+/precisionFunc[gradR1;grad[rosenFunc;first lsq1;1.49e-8]]
+/precisionFunc[gradR2;grad[rosenFunc;first lsq2;1.49e-8]]
+/precisionFunc[gradR3;grad[rosenFunc;first lsq3;1.49e-8]]
+
+
+precisionFunc[func1;f1:funcEval[rosenFunc;1_first mat1;1.49e-8]]
+precisionFunc[func2;f2:funcEval[rosenFunc;1_first mat2;1.49e-8]]
+precisionFunc[func3;f3:funcEval[rosenFunc;1_first mat3;1.49e-8]]
+
+
+precisionFunc[sub1;subtract[rosenFunc[1_first mat1];func1]]
+precisionFunc[sub2;subtract[rosenFunc[1_first mat2];func2]]
+precisionFunc[sub3;subtract[rosenFunc[1_first mat3];func3]]
+
+precisionFunc[sub1;subtract[rosenFunc[1_first mat1];f1]]
+precisionFunc[sub2;subtract[rosenFunc[1_first mat2];f2]]
+precisionFunc[sub3;subtract[rosenFunc[1_first mat3];f3]]
+
 
 precisionFunc[sub1;subtract[func1_old;func1]]
 precisionFunc[sub2;subtract[func2_old;func2]]
 precisionFunc[sub3;subtract[func3_old;func3]]
 
 
-
+fexp:{xexp[x;3]}
+precisionFunc[fexp1;fexp[98f+1e-10]]
+precisionFunc[fexp2;fexp[98f+1e-8]]
+precisionFunc[fexp3;fexp[1e-8+1e-7]]
 
