@@ -62,26 +62,27 @@ precisionFunc[sub2;subtract[func2_old;func2]]
 precisionFunc[sub3;subtract[func3_old;func3]]
 
 
-fexp:{(x+1e-15)-xexp[x;3]}
+fexp:{x-xexp[x;5]}
 precisionFunc[fexp1;fe1:fexp[1.2345e-2]]
 precisionFunc[fexp2;fe2:fexp[1.2345e-7]]
 precisionFunc[fexp3;fe3:fexp[1.2345e-15]]
-precisionFunc[fexp4;fe4:fexp[1f]]
 
 
 
 1"\nexp1: ",string fexp1-fe1;
 1"\nexp2: ",string fexp2-fe2;
 1"\nexp3: ",string fexp3-fe3;
-1"\nexp4: ",string fexp4-fe4;
 
-precisionFunc[funcN1;f1:(func1+1.421085e-014)-98f]
-precisionFunc[funcN2;f2:(func2+1.421085e-014)-98f]
-precisionFunc[funcN3;f3:(func3+1.421085e-014)-98f]
+rosenFunc:{(sum((_[-1;x]xexp 2)))}
+
+precisionFunc[funcN1;f1:rosenFunc[first mat1]]
+precisionFunc[funcN2;f2:rosenFunc[first mat2]]
+precisionFunc[funcN3;f3:rosenFunc[first mat3]]
+
+1"func1: ",string funcN1-f1;
+1"func2: ",string funcN2-f2;
+1"func3: ",string funcN3-f3;
 
 
-1"\nexp1: ",string funcN1-f1;
-1"\nexp2: ",string funcN2-f2;
-1"\nexp3: ",string funcN3-f3;
 
 
