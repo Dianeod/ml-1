@@ -63,15 +63,15 @@ precisionFunc[sub3;subtract[func3_old;func3]]
 
 
 fexp:{x-xexp[x;5]}
-precisionFunc[fexp1;fe1:fexp[1.2345e-2]]
-precisionFunc[fexp2;fe2:fexp[1.2345e-7]]
-precisionFunc[fexp3;fe3:fexp[1.2345e-15]]
+/precisionFunc[fexp1;fe1:fexp[1.2345e-2]]
+/precisionFunc[fexp2;fe2:fexp[1.2345e-7]]
+/precisionFunc[fexp3;fe3:fexp[1.2345e-15]]
 
 
 
-1"\nexp1: ",string fexp1-fe1;
-1"\nexp2: ",string fexp2-fe2;
-1"\nexp3: ",string fexp3-fe3;
+/1"\nexp1: ",string fexp1-fe1;
+/1"\nexp2: ",string fexp2-fe2;
+/1"\nexp3: ",string fexp3-fe3;
 
 rosenFunc:{(((_[-1;x]xexp 2)))}
 
@@ -81,7 +81,7 @@ precisionFunc[funcN3;f3:rosenFunc[first mat3]]
 
 1"func1: ",string where 0<abs funcN1-f1;
 1"func2: ",string where 0<abs funcN2-f2;
-1"func3: ",string where 0<abs funcN3-f3;
+1"func3: ",string where 0<funcN3-f3;
 
 
 
