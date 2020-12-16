@@ -43,6 +43,7 @@ USER kx
 RUN . /opt/conda/etc/profile.d/conda.sh \
         && conda activate kx \
         && pip install pip==9.0.1 \
+        && conda install -c conda-forge sobol-seq \
         && pip install -r /opt/kx/ml/requirements.txt \
         && conda clean -y --all 
 
