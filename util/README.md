@@ -32,10 +32,10 @@ q).ml.loadfile`:util/init.q
 
 ## Documentation
 
-Documentation is available on the [Utilities](https://code.kx.com/v2/ml/toolkit/utils/) homepage.
+Documentation is available on the [Utilities](https://code.kx.com/q/ml/toolkit/utilities/metric/) homepage.
 
 ## Status
   
-The machine-learning utilities library is still in development and is available here as a beta release. Further functionality and improvements will be made to the library in the coming months.
+The machine-learning utilities library is still in development. Further functionality and improvements will be made to the library on an ongoing basis.
 
 If you have any issues, questions or suggestions, please write to ai@kx.com.
